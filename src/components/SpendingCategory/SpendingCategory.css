@@ -1,0 +1,170 @@
+.spending-category {
+    width: 100%;
+    height: 340px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9ed;
+    border-radius: 12px;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+.spending-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.spending-header h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.month-button {
+    height: 31px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 10px;
+    border: 1px solid #dfe3e8;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.month-button:hover {
+    background-color: #f8f9fa;
+}
+
+/* CONTENT */
+
+.spending-content {
+    height: calc(100% - 45px);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+/* DONUT CHART */
+
+.donut-container {
+    width: 215px;
+    height: 215px;
+    flex-shrink: 0;
+}
+
+/* CATEGORY LIST */
+
+.category-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding-right: 2px;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) 72px 42px;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 12px;
+}
+
+.category-name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+
+.category-color {
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.category-name {
+    color: #273142;
+    white-space: nowrap;
+}
+
+.category-amount {
+    color: #273142;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.category-percentage {
+    color: #64748b;
+    text-align: right;
+    white-space: nowrap;
+}
+
+@media (max-width: 1150px) {
+
+    .spending-content {
+        gap: 10px;
+    }
+
+    .donut-container {
+        width: 190px;
+        height: 190px;
+    }
+
+    .category-row {
+        grid-template-columns: minmax(100px, 1fr) 65px 38px;
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .spending-category {
+        height: auto;
+
+        min-height: 340px;
+    }
+
+    .spending-content {
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+    .donut-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .category-list {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .spending-category {
+        padding: 15px;
+    }
+
+    .category-row {
+        grid-template-columns: 1fr auto auto;
+
+        column-gap: 6px;
+
+        font-size: 11px;
+    }
+
+}

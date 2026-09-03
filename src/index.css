@@ -24,3 +24,10 @@ body {
     flex: 1;
     padding: 22px;
 }
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr 0.65fr;
+    gap: 16px;
+    margin-top: 18px;
+}
