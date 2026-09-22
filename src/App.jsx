@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar/Sidebar'
 import Header from './components/Header/Header'
 import SummaryCards from './components/SummaryCards/SummaryCards'
 import SpendingCategory from './components/SpendingCategory/SpendingCategory'
+import ExpenseTrend from './components/ExpenseTrend/ExpenseTrend'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <SummaryCards />
           <div className='dashboard-grid'>
             <SpendingCategory />
+            <ExpenseTrend />
           </div>
         </div>
       </main>
