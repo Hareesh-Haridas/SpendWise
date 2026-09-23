@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import SummaryCards from './components/SummaryCards/SummaryCards'
 import SpendingCategory from './components/SpendingCategory/SpendingCategory'
 import ExpenseTrend from './components/ExpenseTrend/ExpenseTrend'
+import QuickSummary from './components/QuickSummary/QuickSummary'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <div className='dashboard-grid'>
             <SpendingCategory />
             <ExpenseTrend />
+            <QuickSummary />
           </div>
         </div>
       </main>
