@@ -31,3 +31,9 @@ body {
     gap: 16px;
     margin-top: 18px;
 }
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
