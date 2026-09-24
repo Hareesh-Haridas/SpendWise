@@ -1,0 +1,120 @@
+.recent-budgets {
+    background-color: #ffffff;
+    border: 1px solid #e7e9ed;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.recent-budgets-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.recent-budgets-header h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #151515;
+}
+
+.recent-budgets-header button {
+    border: none;
+    background: none;
+    color: #ef1d2f;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.budget-item {
+    margin-bottom: 18px;
+}
+
+.budget-item:last-child {
+    margin-bottom: 0;
+}
+
+.budget-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.budget-name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12px;
+    color: #111827;
+}
+
+.budget-amount {
+    font-size: 11px;
+    color: #374151;
+}
+
+.budget-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.budget-icon.orange {
+    background-color: #fff1e4;
+    color: #ff8a22;
+}
+
+.budget-icon.red {
+    background-color: #ffeded;
+    color: #ff4d5a;
+}
+
+.budget-icon.blue {
+    background-color: #eaf2ff;
+    color: #3787ed;
+}
+
+.budget-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 41px;
+}
+
+.budget-progress {
+    flex: 1;
+    height: 4px;
+    background-color: #edf0f2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.budget-progress-fill {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.budget-progress-fill.orange {
+    background-color: #ff8a22;
+}
+
+.budget-progress-fill.red {
+    background-color: #ff4d5a;
+}
+
+.budget-progress-fill.blue {
+    background-color: #3787ed;
+}
+
+.budget-percentage {
+    width: 28px;
+    font-size: 11px;
+    color: #475569;
+    text-align: right;
+}

@@ -5,6 +5,7 @@ import SummaryCards from './components/SummaryCards/SummaryCards'
 import SpendingCategory from './components/SpendingCategory/SpendingCategory'
 import ExpenseTrend from './components/ExpenseTrend/ExpenseTrend'
 import QuickSummary from './components/QuickSummary/QuickSummary'
+import RecentBudgets from './components/RecentBudgets/RecentBudgets'
 
 function App() {
   return (
@@ -17,7 +18,10 @@ function App() {
           <div className='dashboard-grid'>
             <SpendingCategory />
             <ExpenseTrend />
-            <QuickSummary />
+            <div className='right-column'>
+              <QuickSummary />
+              <RecentBudgets />
+            </div>
           </div>
         </div>
       </main>
