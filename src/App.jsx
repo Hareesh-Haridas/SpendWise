@@ -6,6 +6,7 @@ import SpendingCategory from './components/SpendingCategory/SpendingCategory'
 import ExpenseTrend from './components/ExpenseTrend/ExpenseTrend'
 import QuickSummary from './components/QuickSummary/QuickSummary'
 import RecentBudgets from './components/RecentBudgets/RecentBudgets'
+import TopCategories from './components/TopCategories/TopCategories'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <div className='right-column'>
               <QuickSummary />
               <RecentBudgets />
+              <TopCategories />
             </div>
           </div>
         </div>
