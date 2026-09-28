@@ -7,6 +7,7 @@ import ExpenseTrend from './components/ExpenseTrend/ExpenseTrend'
 import QuickSummary from './components/QuickSummary/QuickSummary'
 import RecentBudgets from './components/RecentBudgets/RecentBudgets'
 import TopCategories from './components/TopCategories/TopCategories'
+import RecentTransactions from './components/RecentTransactions/RecentTransactions'
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
               <RecentBudgets />
               <TopCategories />
             </div>
+            <RecentTransactions />
           </div>
+
         </div>
       </main>
     </div>
