@@ -13,8 +13,8 @@ import {
     Car,
     ShoppingBag
 } from 'lucide-react'
-function RecentTransactions() {
-    const transactions = [
+function RecentTransactions({ transactions }) {
+    const mockTransactions = [
         {
             id: 1,
             description: 'Grocery Store',
@@ -110,7 +110,7 @@ function RecentTransactions() {
                         </tr>
                     </thead>
                     <tbody>
-                        {transactions.map((transaction) => {
+                        {[...mockTransactions, ...transactions].map((transaction) => {
                             const CategoryIcon = transaction.icon;
                             return (
                                 <tr key={transaction.id}>

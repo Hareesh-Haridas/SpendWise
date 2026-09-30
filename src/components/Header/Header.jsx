@@ -7,7 +7,7 @@ import {
     Bell
 } from "lucide-react";
 import './Header.css'
-function Header() {
+function Header({ onAddTransaction }) {
     return (
         <header className='header'>
             <div className='header-greeting'>
@@ -20,7 +20,7 @@ function Header() {
                     <input type="text" placeholder='Search transactions, categories...' />
                     <span className='search-shortcut'>⌘ K</span>
                 </div>
-                <button className='add-transaction-btn'>
+                <button className='add-transaction-btn' onClick={onAddTransaction}>
                     <Plus size={19}></Plus>
                     <span>Add Transactions</span>
                 </button>
