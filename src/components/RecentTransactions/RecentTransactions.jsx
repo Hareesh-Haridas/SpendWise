@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './RecentTransactions.css'
 import {
     Search,
@@ -14,6 +14,9 @@ import {
     ShoppingBag
 } from 'lucide-react'
 function RecentTransactions({ transactions }) {
+
+    const [searchTerm, setSearchTerm] = useState('');
+    console.log("Search term:", searchTerm);
     const mockTransactions = [
         {
             id: 1,
@@ -70,7 +73,11 @@ function RecentTransactions({ transactions }) {
             status: 'Completed',
             icon: Utensils
         }
-    ]
+    ];
+    const allTransactions = [...mockTransactions, ...transactions];
+    const filteredTransactions = allTransactions.filter((transaction) => {
+        return transaction.description.toLowerCase().includes(searchTerm.toLowerCase());
+    })
     return (
         <section className='recent-transactions'>
             <div className='transactions-header'>
@@ -83,7 +90,9 @@ function RecentTransactions({ transactions }) {
                     </select>
                     <div className='transaction-search'>
                         <Search size={16} />
-                        <input type="text" placeholder='Search transactions...' />
+                        <input type="text" placeholder='Search transactions...' value={searchTerm} onChange={(e) => {
+                            setSearchTerm(e.target.value);
+                        }} />
                     </div>
                     <button className='icon-button'>
                         <SlidersHorizontal size={17} />
@@ -110,7 +119,7 @@ function RecentTransactions({ transactions }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {[...mockTransactions, ...transactions].map((transaction) => {
+                        {filteredTransactions.map((transaction) => {
                             const CategoryIcon = transaction.icon;
                             return (
                                 <tr key={transaction.id}>
