@@ -16,7 +16,8 @@ import {
 function RecentTransactions({ transactions }) {
 
     const [searchTerm, setSearchTerm] = useState('');
-    console.log("Search term:", searchTerm);
+    const [transactionType, setTransactionType] = useState('all');
+
     const mockTransactions = [
         {
             id: 1,
@@ -76,17 +77,19 @@ function RecentTransactions({ transactions }) {
     ];
     const allTransactions = [...mockTransactions, ...transactions];
     const filteredTransactions = allTransactions.filter((transaction) => {
-        return transaction.description.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesSearch = transaction.description.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchType = transactionType === 'all' || transaction.type.toLowerCase() === transactionType;
+        return matchesSearch && matchType;
     })
     return (
         <section className='recent-transactions'>
             <div className='transactions-header'>
                 <h2>Recent Transactions</h2>
                 <div className='transaction-controls'>
-                    <select name="" id="" className='transaction-filter'>
-                        <option value="">All Transactions</option>
-                        <option value="">Expenses</option>
-                        <option value="">Income</option>
+                    <select name="" id="" className='transaction-filter' value={transactionType} onChange={(e) => setTransactionType(e.target.value)}>
+                        <option value="all">All Transactions</option>
+                        <option value="expense">Expenses</option>
+                        <option value="income">Income</option>
                     </select>
                     <div className='transaction-search'>
                         <Search size={16} />
