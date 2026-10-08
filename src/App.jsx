@@ -50,6 +50,11 @@ function App() {
     ])
     setShowAddTransaction(false);
   }
+  const handleDeleteTransaction = (id) => {
+    setTransactions(prevTransactions =>
+      prevTransactions.filter(transaction => transaction.id !== id)
+    )
+  }
 
   return (
     <div className='app'>
@@ -70,7 +75,7 @@ function App() {
               <RecentBudgets />
               <TopCategories />
             </div>
-            <RecentTransactions transactions={transactions} />
+            <RecentTransactions transactions={transactions} onDeleteTransaction={handleDeleteTransaction} />
           </div>
 
         </div>
