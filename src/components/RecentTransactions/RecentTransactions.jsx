@@ -13,7 +13,7 @@ import {
     Car,
     ShoppingBag
 } from 'lucide-react'
-function RecentTransactions({ transactions, onDeleteTransaction }) {
+function RecentTransactions({ transactions, onDeleteTransaction, onEditTransaction }) {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [transactionType, setTransactionType] = useState('all');
@@ -176,7 +176,7 @@ function RecentTransactions({ transactions, onDeleteTransaction }) {
                                     </td>
                                     <td>
                                         <div className='transaction-actions'>
-                                            <button className='action-button edit'>
+                                            <button className='action-button edit' onClick={() => onEditTransaction(transaction)}>
                                                 <Pencil size={15} />
                                             </button>
                                             <button className='action-button delete' onClick={() => onDeleteTransaction(transaction.id)}>

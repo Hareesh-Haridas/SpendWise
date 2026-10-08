@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './AddTransaction.css'
 
-function AddTransaction({ onclose, onSave }) {
+function AddTransaction({ onclose, onSave, editingTransaction }) {
 
     const [type, setType] = useState('expense');
     const [description, setDescription] = useState('');
@@ -10,6 +10,14 @@ function AddTransaction({ onclose, onSave }) {
     const [date, setDate] = useState('');
     const [error, setError] = useState('');
 
+    useEffect(() => {
+        if (editingTransaction) {
+            setDescription(editingTransaction.description);
+            setAmount(Math.abs(editingTransaction.amount));
+            setCategory(editingTransaction.category);
+            setDate(new Date(editingTransaction.date).toISOString().split('T')[0]);
+        }
+    }, [editingTransaction])
 
     return (
         <div className='modal-overlay'>
@@ -64,6 +72,7 @@ function AddTransaction({ onclose, onSave }) {
                             return;
                         }
                         const transaction = {
+                            id: editingTransaction ? editingTransaction.id : Date.now(),
                             type,
                             description,
                             amount,
