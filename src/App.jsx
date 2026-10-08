@@ -19,6 +19,7 @@ import {
 function App() {
 
   const [showAddTransaction, setShowAddTransaction] = useState(false);
+  const [editingTransaction, setEditingTransaction] = useState(null);
   const [transactions, setTransactions] = useState([]);
 
   const handleAddTransaction = (transaction) => {
@@ -50,6 +51,22 @@ function App() {
     ])
     setShowAddTransaction(false);
   }
+
+  const handleEditTransaction = (transaction) => {
+    setEditingTransaction(transaction);
+    setShowAddTransaction(true);
+  }
+  const handleUpdateTransaction = (updatedTransaction) => {
+    setTransactions(prevTransactions =>
+      prevTransactions.map(transaction =>
+        transaction.id === updatedTransaction.id ? updatedTransaction : transaction
+      )
+    )
+    setEditingTransaction(null);
+    setShowAddTransaction(false);
+  }
+
+
   const handleDeleteTransaction = (id) => {
     setTransactions(prevTransactions =>
       prevTransactions.filter(transaction => transaction.id !== id)
@@ -60,10 +77,14 @@ function App() {
     <div className='app'>
       <Sidebar />
       <main className='main-content'>
-        <Header onAddTransaction={() => setShowAddTransaction(true)} />
+        <Header onAddTransaction={() => {
+          setEditingTransaction(null)
+          setShowAddTransaction(true)
+        }} />
         {showAddTransaction && (
           <AddTransaction onclose={() => setShowAddTransaction(false)}
-            onSave={handleAddTransaction} />
+            onSave={editingTransaction ? handleUpdateTransaction : handleAddTransaction}
+            editingTransaction={editingTransaction} />
         )}
         <div className='page-content'>
           <SummaryCards />
@@ -75,7 +96,7 @@ function App() {
               <RecentBudgets />
               <TopCategories />
             </div>
-            <RecentTransactions transactions={transactions} onDeleteTransaction={handleDeleteTransaction} />
+            <RecentTransactions transactions={transactions} onDeleteTransaction={handleDeleteTransaction} onEditTransaction={handleEditTransaction} />
           </div>
 
         </div>
