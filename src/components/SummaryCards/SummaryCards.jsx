@@ -8,7 +8,23 @@ import {
 } from "lucide-react";
 import './SummaryCards.css'
 
-function SummaryCards() {
+function SummaryCards({ transactions }) {
+
+    const totalExpenses = transactions.filter(transaction => transaction.type === 'Expense')
+        .reduce((total, transaction) => total + Math.abs(transaction.amount), 0);
+
+    const totalIncome = transactions.filter(transaction => transaction.type === 'Income')
+        .reduce((total, transaction) => total + Math.abs(transaction.amount), 0);
+
+    const currentBalance = totalIncome - totalExpenses;
+
+    const monthlyBudget = 5000;
+    const budgetSpent = totalExpenses;
+
+    const budgetPercentage = Math.min(
+        (budgetSpent / monthlyBudget) * 100, 100
+    );
+
     return (
         <section className='summary-cards'>
             <div className='summary-card'>
@@ -18,7 +34,10 @@ function SummaryCards() {
                     </div>
                     <div className='summary-details'>
                         <p>Total Expenses</p>
-                        <h2>$15,240.50</h2>
+                        <h2>${totalExpenses.toLocaleString('en-US', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })}</h2>
                     </div>
                 </div>
                 <div className='summary-bottom expense-change'>
@@ -34,7 +53,10 @@ function SummaryCards() {
                     </div>
                     <div className='summary-details'>
                         <p>Total Income</p>
-                        <h2>$17,000.00</h2>
+                        <h2>${totalIncome.toLocaleString('en-US', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })}</h2>
                     </div>
                 </div>
                 <div className='summary-bottom income-change'>
@@ -50,7 +72,10 @@ function SummaryCards() {
                     </div>
                     <div className='summary-details'>
                         <p>Current Balance</p>
-                        <h2>$1,759.50</h2>
+                        <h2>${currentBalance.toLocaleString('en-US', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })}</h2>
                     </div>
                 </div>
                 <div className='summary-progress'>
@@ -71,9 +96,15 @@ function SummaryCards() {
                     </div>
                 </div>
                 <div className='summary-progress'>
-                    <p><span className='summary-progress-data'>$3,240.50</span> spent (65%)</p>
+                    <p><span className='summary-progress-data'> {totalIncome > 0
+                        ? Math.round(Math.max(0, Math.min((currentBalance / totalIncome) * 100, 100)))
+                        : 0}%</span>  {' '}of income remaining</p>
                     <div className='progress-bar'>
-                        <div className='progress-fill budget-progress'></div>
+                        <div className='progress-fill budget-progress' style={{
+                            width: `${totalIncome > 0
+                                ? Math.max(0, Math.min((currentBalance / totalIncome) * 100, 100))
+                                : 0}%`
+                        }}></div>
                     </div>
                 </div>
             </div>
