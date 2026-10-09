@@ -87,7 +87,7 @@ function App() {
             editingTransaction={editingTransaction} />
         )}
         <div className='page-content'>
-          <SummaryCards />
+          <SummaryCards transactions={transactions} />
           <div className='dashboard-grid'>
             <SpendingCategory />
             <ExpenseTrend />
